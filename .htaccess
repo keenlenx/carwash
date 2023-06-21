@@ -1,0 +1,23 @@
+
+RewriteEngine on
+
+RewriteOptions inherit
+
+# ----------------------------------------------------------------------
+# | Cross-origin images                                                |
+# ----------------------------------------------------------------------
+<IfModule mod_setenvif.c>
+  <IfModule mod_headers.c>
+    <FilesMatch "\.(bmp|cur|gif|ico|jpe?g|png|svgz?|webp|avifs?)$">
+      SetEnvIf Origin ":" IS_CORS
+      Header set Access-Control-Allow-Origin "*" env=IS_CORS
+    </FilesMatch>
+  </IfModule>
+</IfModule>
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php74” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php74___lsphp .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
